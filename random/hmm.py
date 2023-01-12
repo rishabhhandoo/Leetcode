@@ -1,1 +1,1 @@
-print("hi i am rishabh")
+print((66+42)%18)
