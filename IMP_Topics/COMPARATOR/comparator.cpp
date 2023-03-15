@@ -17,9 +17,13 @@ int main()
 {
 	// Initializing 2D vector "vect" with
 	// values
-	vector<vector<int> > vect{ { 3, 5, 1 },
-							{ 4, 8, 6 },
-							{ 7, 2, 9 } };
+	  
+    vector<vector<int>> vect
+    {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
 
 	// Number of rows;
 	int m = vect.size();
