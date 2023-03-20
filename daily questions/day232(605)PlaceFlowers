@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool canPlaceFlowers(vector<int>& flo, int m) {
+        int ans =0;
+        int n = flo.size();
+        if(m==0)    return true;
+        if(n==0)    return false;
+        if(n==1 )   return flo[0]==0 && m<=1;
+        for(int i=0;i<n;i++)
+        {
+            if(i==0)
+            {
+                if(flo[0]==0 && flo[1]==0)
+                {
+                    flo[0]=1;
+                    ans++;
+                }
+            }else if(i==n-1 &&flo[n-1]==0 && flo[n-2]==0)
+            {
+                flo[n-1]=1;
+                ans++;
+            }else{
+                if(flo[i-1]==0 && flo[i]==0 && flo[i+1]==0)
+                {
+                    flo[i]=1;
+                    ans++;
+                }
+            }
+            cout<<i<<"val"<<ans<<endl;
+        }
+        return ans>=m;
+    }
+};
