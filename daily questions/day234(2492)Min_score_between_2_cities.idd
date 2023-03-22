@@ -1,0 +1,66 @@
+// class Solution {
+// public:
+//     int minScore(int n, vector<vector<int>>& roads) {
+//         // priority_queue<pair<int,int> , vector<pair<int,int>> , greater<pair<int,int>> pq;
+//         priority_queue<pair<int,int>, vector<pair<int,int>, greater<pair<int,int> >
+
+//         //making an adj list
+//         vector<vector<int>> adj(n);
+//         for(auto itr : roads)
+//         {
+//             int no1=itr.first-1;
+//             int no2=itr.second-1;
+//             adj[no1].push_back(no2);
+//             adj[no2].push_back(no1);
+//         }
+
+//         vector<int> dist(n,1e9);
+//         dist[0]=0;
+//         pq.push({0,0});
+//         while(!pq.empty())
+//         {
+//             int safar = pq.top().first;
+//             int node = pq.top().second;
+//             pq.pop();
+
+//             for(auto itr: adj[node])
+//             {
+//                 if(safar+adj[node] <= dist[itr])
+//                 {
+//                     dist[node] = safar+adj[node];
+//                     pq.push_back(dist[node],node);
+//                 }
+//             }
+//         }
+//         return n-1;
+
+
+//     }
+// };
+class Solution {
+public:
+    int minScore(int n, vector<vector<int>>& roads) {
+        int ans = INT_MAX;
+        vector<vector<pair<int, int>>> gr(n+1);
+        for(auto edge : roads){ 
+            gr[edge[0]].push_back({edge[1], edge[2]}); // u-> {v, dis}
+            gr[edge[1]].push_back({edge[0], edge[2]}); // v-> {u, dis}
+        }
+
+        vector<int> vis(n+1, 0);
+        queue<int> q;
+        q.push(1); vis[1] = 1;
+        while(!q.empty()){
+            auto node = q.front(); q.pop();
+            for(auto& [v, dis] : gr[node]){
+                ans = min(ans, dis);
+                if(vis[v]==0){
+                    vis[v] = 1;
+                    q.push(v);
+                }
+            }
+        }
+
+        return ans;
+    }
+};
