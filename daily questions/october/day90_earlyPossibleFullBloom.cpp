@@ -10,7 +10,7 @@ int earliestFullBloom(vector<int>& plantTime, vector<int>& growTime) {
         }
         
 		// sort the vector in non-increasing order 
-		// to get grow time of plants in descending order
+		// to get grow time of plfants in descending order
         sort(plant.begin(), plant.end(),  greater<pair<int, int>>());
         
         int day = 0;
