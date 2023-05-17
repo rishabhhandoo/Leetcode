@@ -56,3 +56,6 @@ public:
 
     }
 };
+
+
+//method 2
