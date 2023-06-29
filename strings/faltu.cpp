@@ -3,10 +3,11 @@ using namespace std;
  
 int main()
 {
- cout<<"hello";
-vector<int> a;
-a.push_back(1);
-b.push_back(2);
+string s= "hello";
+
+s.insert('(',s.begin()+1);
+cout<<s<<endl;
 
 return 0;
 }
+
